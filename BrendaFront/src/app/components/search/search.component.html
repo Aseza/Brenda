@@ -1,0 +1,29 @@
+<div class="card hoverable grey lighten-4">
+  <div class="card-content white-text">
+    <span class="card-title center black-text ">XX</span>
+    <div class="row">
+      <div class="input-field col s12 m8">
+        <input class="heavy black-text" id="project"  [(ngModel)]="word" type="text" />
+        <label class="light black-text" for="project">Search For a Project</label>
+      </div>
+      <div class="col s12 m4">
+        <br/>
+        <br/>
+        <p>
+          <input name="isCase" type="checkbox" id="case_sen" />
+          <label class="black-text" for="case_sen">Case Sensitive</label>
+        </p>
+      </div>
+    </div>
+    <div class="row center">
+      <button class="waves-effect waves-light blue btn btn-medium right" (click)="Search(word,indexesObject.minIndex,indexesObject.maxIndex,tru)">Search
+        <i class="material-icons left">search</i>
+      </button>
+      <a class="waves-effect waves-light btn btn-medium blue left modal-trigger" (click)="SendModal()" href="#modal1">
+        <i class="material-icons left">add</i>Add</a>
+    </div>
+  </div>
+</div>
+<div class="progress" *ngIf="searchPreloader" >
+    <div class="indeterminate indigo"></div>
+</div>

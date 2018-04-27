@@ -1,0 +1,33 @@
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12 m8">
+                  <input name="name" *ngIf="modal" [(ngModel)]="modal.name" id="project_name"  type="text" class="validate">
+                  <label for="project_name">Project Name (Be Specific)</label>
+                </div>
+                <div class="input-field col s12 m4">
+                  <input name="deadline" *ngIf="modal"  [(ngModel)]="modal.deadline" id="deadline" type="date" class=" validate">
+                  <label for="deadline"></label>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                      <textarea name="description" *ngIf="modal"  [(ngModel)]="modal.description" id="description" 
+                      class="materialize-textarea"></textarea>
+                      <label for="description">Description</label>
+                    </div>
+              </div>
+            </form>
+          </div>
+    </div>
+    <div *ngIf="modal &&modal.option==0" class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" 
+      (click)="createProject(modal.name,modal.description,modal.deadline)">Add</a>
+    </div>
+    <div *ngIf="modal && modal.option==1" class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" 
+        (click)="updateProject(modal.id, modal.name,modal.description,modal.deadline)">Update</a>
+      </div>
+  </div>
