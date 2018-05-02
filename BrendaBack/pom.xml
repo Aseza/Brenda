@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.devglan</groupId>
-    <artifactId>spring-boot-hibernate-example</artifactId>
+    <groupId>com.brenda-official</groupId>
+    <artifactId>spring-brenda-crud-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
-        <start-class>spring-boot-example.Application</start-class>
+        <start-class>com.brenda.Application</start-class>
     </properties>
 
     <parent>
