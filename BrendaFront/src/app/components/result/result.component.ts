@@ -12,7 +12,6 @@ export class ResultComponent implements OnInit {
   shouldBeOpen = false;
   shouldBeActive : boolean[];
   dataServiceImp : DataService;
-  resultPreloader : boolean = false;
   @Input() pagesNumber: number[];
   @Output() modalEmitter = new EventEmitter<any>();
   @Output() IndexesEmitter = new EventEmitter<any>();
@@ -24,7 +23,6 @@ export class ResultComponent implements OnInit {
 
   constructor(public dataService: DataService) {
     this.dataServiceImp = dataService;
-    this.pagesNumber = [];
     this.shouldBeActive = [];
     this.shouldBeActive[0] = true;
 
@@ -36,8 +34,8 @@ export class ResultComponent implements OnInit {
       text: "You won't be able to revert this!",
       type: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
       confirmButtonText: 'Yes, delete it!'
     }).then(() => {
       this.dataServiceImp.removeProject(id).subscribe(()=>{
@@ -60,13 +58,18 @@ export class ResultComponent implements OnInit {
   }
   ngOnInit() {
   }
-  SetPage_SendPagingSignal(event:any, minIndex:number, maxIndex: number, j:number){ 
-    var indexesObject = {'minIndex':minIndex,'maxIndex':maxIndex };
-    this.IndexesEmitter.emit(indexesObject);
+  SetPageActive(j:number){
     for (let i in this.shouldBeActive) {
       this.shouldBeActive[i]=false;
     }
     this.shouldBeActive[j]=true;
+    
+  }
+  SendPagingSignal(event:any, minIndex:number, maxIndex: number, j:number){ 
+  
+    var indexesObject = {'minIndex':minIndex,'maxIndex':maxIndex };
+    this.IndexesEmitter.emit(indexesObject);
+  
     console.log('emitting indexesObject of value '+ indexesObject.minIndex );
 
   }

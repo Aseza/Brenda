@@ -1,13 +1,3 @@
-/* body {
-    padding-left: 300px;
-  }
-
-  @media only screen and (max-width : 992px) {
-    body {
-      padding-left: 0;
-    }
-  } */
-      
   body{
     display: flex;
     min-height: 100vh;

@@ -4,13 +4,9 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.brenda.utilities.NumberOfRows;
-import org.hibernate.Query;
-import org.hibernate.Session;
+import com.brenda.utils.CalcUtils;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,10 +22,23 @@ public class UserController {
 	@Autowired
 	private SessionFactory sf;
 
+
+//	@CrossOrigin
+//	@RequestMapping(value = "/getRatio", method = RequestMethod.GET)
+//	public @ResponseBody Long getRatio(){
+//		return projectService.getAllRowsCount();
+//	}
+
 	@CrossOrigin
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<Integer, List<Project>> getProjectsLike(@RequestParam String word,@RequestParam int minIndex,@RequestParam int maxIndex) {
+		Map<Integer, List<Project>> list = projectService.getProjectsLike(word, minIndex, maxIndex);
+		long  allRowsCount = projectService.getAllRowsCount();
+		double ratio = CalcUtils.round(list.size()/allRowsCount,2);
+//		System.out.println("RATIO: " + allRowsCount + "   "+ list.get(0).size());
+		System.out.println("RATIO: " + allRowsCount + "   "+ list);
+
 		return projectService.getProjectsLike(word, minIndex, maxIndex);
 	}
 	@CrossOrigin

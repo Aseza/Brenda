@@ -19,4 +19,7 @@ export class DataService {
   searchAProject(word: string, minIndex : number, maxIndex: number) {     
     return this.http.get('http://127.0.0.1:8080/search?word='+ word+'&minIndex='+minIndex+'&maxIndex='+maxIndex).map(res => res.json());
   }
+    getRatio() {     
+    return this.http.get('http://127.0.0.1:8080/getRatio').map(res => res.json() );
+  }
 }

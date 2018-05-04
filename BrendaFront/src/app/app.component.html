@@ -14,22 +14,26 @@
         <div class="parallax"><img src="./../assets/static/images/parallx.jpg" alt="Unsplashed background img 1"></div>
 </div>
 <div class="section">
-    
         <div class="row ">
-            <div class="col s12 m8 l6  ">
+            <div class="col s12 m8 l4 ">
                 <app-search id="try" class="section scrollspy"
-                (modalEmitter)="recieveModalFromSearch($event)" 
-                (projectsObjectEmitter)="recieveProjectsFromSearch($event)"
-                [indexesObject]="indexesObject"
-                ></app-search>
+                  (modalEmitter)="recieveModalFromSearch($event)" 
+                  (projectsObjectEmitter)="recieveProjectsFromSearch($event)"
+                  [indexesObject]="indexesObject">
+                </app-search>
             </div>
-            <div class="col s12 l6 ">
+            <div class="col s12 m4 l2 push-l6">           
+                <app-ratio></app-ratio>
+            </div>
+            <div class="col s12 m12 l6 pull-l2 ">
                 <app-result
-                (modalEmitter)="recieveModalFromResult($event)"
-                [projects] ="projects" [pagesNumber]="pagesNumber"
-                (IndexesEmitter)="receiveIndexes($event)"
-                ></app-result>
+                  (modalEmitter)="recieveModalFromResult($event)"
+                  [projects] ="projects" [pagesNumber]="pagesNumber"
+                  (IndexesEmitter)="receiveIndexes($event)">
+                </app-result>
             </div>
+         
+         
         </div>
 </div>
 

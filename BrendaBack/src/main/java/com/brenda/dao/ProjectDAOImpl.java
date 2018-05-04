@@ -1,12 +1,9 @@
 package com.brenda.dao;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-import com.brenda.utilities.NumberOfRows;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +12,6 @@ import com.brenda.model.Project;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import javax.validation.constraints.Null;
 
 @Component
 @Repository
@@ -24,7 +20,6 @@ public class ProjectDAOImpl implements ProjectDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	NumberOfRows rows;
 
 	@Override
 	public int removeProject(int id) {
@@ -54,7 +49,19 @@ public class ProjectDAOImpl implements ProjectDAO {
 
 		return result;
 	}
-
+	@Override
+	public Long getAllRowsCount() {
+		Long decaf=0l;
+				try {
+					System.out.println();;
+					decaf = (Long)getCurrentSession().createQuery("select count(*) from Project").uniqueResult();
+				} catch (Exception e){
+					System.out.println("Exception Caught");
+					e.printStackTrace();
+					decaf = -1l;
+				}
+				return decaf;
+	}
 	@Override
 	public void updateProject(int id, Project newProject) {
 		Transaction tx2;

@@ -37,12 +37,27 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(){
       this.indexesObject = {'minIndex':0,'maxIndex':4};
+      console.log("on Init Called");
+      
   }  
 
   SendModal(){
     this.modalEmitter.emit(this.modalObject);  
   }
-
+  Resize(event) {
+    console.log(event.target.innerWidth );
+    
+  }
+  wordChanged(){
+    if (this.word){
+      //this.indexesObject = {'minIndex':0,'maxIndex':4};
+      this.ngOnInit();
+      console.log("errything put to default");
+      
+    }
+    console.log('Anyway');
+    
+  }
   Search(word:string, minIndex:number , maxIndex:number,event:any, isFirstSearch:boolean){
     if(isFirstSearch){ console.log('FirstSearchDetected');
     this.indexesObject.minIndex =0;
@@ -63,7 +78,7 @@ export class SearchComponent implements OnInit {
       this.projectsObjectEmitter.emit(result);
       this.searchPreloader = false;
     });
-
+    
     setTimeout(()=>{ 
       if(this.isNoResponse){
       swal("No Response", "Please Check Your DB status", "warning");
