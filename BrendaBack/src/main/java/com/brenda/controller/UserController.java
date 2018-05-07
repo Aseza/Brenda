@@ -1,63 +1,48 @@
 package com.brenda.controller;
 
-import java.sql.Date;
-import java.util.List;
-import java.util.Map;
 
-import com.brenda.utils.CalcUtils;
-import org.hibernate.SessionFactory;
+import com.brenda.dao_abstract.ProjectDAOAbstractionImpl;
+import com.brenda.model.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import com.brenda.model.Project;
-import com.brenda.service.ProjectService;
+import java.sql.Date;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
 	
 	@Autowired
-	private ProjectService projectService;
+	private ProjectDAOAbstractionImpl projectAbstractDao;
 
-	@Autowired
-	private SessionFactory sf;
-
-
-//	@CrossOrigin
-//	@RequestMapping(value = "/getRatio", method = RequestMethod.GET)
-//	public @ResponseBody Long getRatio(){
-//		return projectService.getAllRowsCount();
-//	}
 
 	@CrossOrigin
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public @ResponseBody
-	Map<Integer, List<Project>> getProjectsLike(@RequestParam String word,@RequestParam int minIndex,@RequestParam int maxIndex) {
-		Map<Integer, List<Project>> list = projectService.getProjectsLike(word, minIndex, maxIndex);
-		long  allRowsCount = projectService.getAllRowsCount();
-		double ratio = CalcUtils.round(list.size()/allRowsCount,2);
-//		System.out.println("RATIO: " + allRowsCount + "   "+ list.get(0).size());
-		System.out.println("RATIO: " + allRowsCount + "   "+ list);
-
-		return projectService.getProjectsLike(word, minIndex, maxIndex);
+	Map<Integer, List<Project>> getProjectsLike(@RequestParam String word, @RequestParam int minIndex, @RequestParam int maxIndex) {
+		return projectAbstractDao.getProjectsLike(word, minIndex, maxIndex);
 	}
+
 	@CrossOrigin
 	@RequestMapping(value = "/remove", method = RequestMethod.GET)
-	public @ResponseBody
-	int removeProject(@RequestParam int id){
-		return projectService.removeProject(id);
+	public @ResponseBody void removeProject(@RequestParam long id){
+		 projectAbstractDao.removeProject(id);
 	}
+
 	@CrossOrigin
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public @ResponseBody
-	long createProject( @RequestParam String name, @RequestParam String desc, @RequestParam Date deadline){
-		return projectService.createProject(new Project(name,desc,deadline));
+	long createProject(@RequestParam String name, @RequestParam String desc, @RequestParam Date deadline){
+		return projectAbstractDao.createProject(new Project(name,desc,deadline));
 	}
+
 	@CrossOrigin
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public @ResponseBody
 	void removeProject(@RequestParam int id, @RequestParam String name, @RequestParam String desc, @RequestParam Date deadline){
-		 projectService.updateProject(id,new Project(name,desc,deadline));
+		projectAbstractDao.updateProject(id,new Project(name,desc,deadline));
 	}
 
 
