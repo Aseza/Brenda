@@ -1,6 +1,6 @@
 package com.brenda.dao_abstract;
 
-import com.brenda.conf.ProjectRepo;
+import com.brenda.conf_dao.ProjectRepo;
 import com.brenda.model.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;

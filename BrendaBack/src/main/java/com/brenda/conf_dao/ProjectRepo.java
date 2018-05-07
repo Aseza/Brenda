@@ -1,4 +1,4 @@
-package com.brenda.conf;
+package com.brenda.conf_dao;
 
 
 import com.brenda.model.Project;
@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public interface ProjectRepo extends CrudRepository<Project, Long> {
