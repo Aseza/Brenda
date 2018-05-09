@@ -11,19 +11,22 @@
             </div>
           </div>
         </div>
-        <div class="parallax"><img src="./../assets/static/images/parallx.jpg" alt="Unsplashed background img 1"></div>
+        <div class="parallax">
+          <img [src]="url" alt="Unsplashed background img 1">
+        </div>
 </div>
-<div class="section">
+<div class="section marine-blue" [ngClass]="{'grey lighten-2':!themeService.isNightModeOn}"  >
         <div class="row ">
             <div class="col s12 m8 l4 ">
                 <app-search id="try" class="section scrollspy"
                   (modalEmitter)="recieveModalFromSearch($event)" 
                   (projectsObjectEmitter)="recieveProjectsFromSearch($event)"
-                  [indexesObject]="indexesObject">
+                  [indexesObject]="indexesObject"
+                  (ratioEmitter)="recieveRatioFromRatioComponent($event)">
                 </app-search>
             </div>
             <div class="col s12 m4 l2 push-l6">           
-                <app-ratio></app-ratio>
+                <app-ratio   [ratio]="ratio" ></app-ratio>
             </div>
             <div class="col s12 m12 l6 pull-l2 ">
                 <app-result

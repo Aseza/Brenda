@@ -11,7 +11,11 @@ import { AddModalComponent } from './components/add-modal/add-modal.component';
 import { RatioComponent } from './components/ratio/ratio.component';
 import { HttpModule } from '@angular/http';
 import { DataService } from './services/dataService/data-service.service';
+import { ThemeService } from './services/themeService/theme.service';
+import { WebSocketService } from './services/webSocketService/web-socket.service';
 import { SideNavComponent } from './components/sideNav/side-nav/side-nav.component';
+import { CountoModule } from 'angular2-counto';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   declarations: [
@@ -27,10 +31,14 @@ import { SideNavComponent } from './components/sideNav/side-nav/side-nav.compone
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    CountoModule,
+    NgxPaginationModule
   ],
   providers: [
-    DataService
+    DataService,
+    ThemeService,
+    WebSocketService
     ],
   bootstrap: [AppComponent]
 })

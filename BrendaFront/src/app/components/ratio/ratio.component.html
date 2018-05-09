@@ -1,8 +1,14 @@
-<div class="card hoverable grey lighten-4">
-  <div class="card-content white-text">
-    <span class="card-title center black-text ">DB Ratio</span>
+<div class="card hoverable"
+[ngClass]="{'ddark-blue': themeService.isNightModeOn,'grey lighten-4':!themeService.isNightModeOn}" >
+
+  <div class="card-content"
+  [ngClass]="{'white-text': themeService.isNightModeOn,'black-text':!themeService.isNightModeOn}"
+  >
+    <span class="card-title center ">DB Ratio</span>
     <div class="row">
-        <h1 class="black-text light center">0%</h1>
+        <!-- <h1 class="black-text light center">{{(ratio | number)*100}}%</h1>  -->
+        <h2 class="truncate light center" counto [step]="30" [countTo]="ratio*100" [countFrom]="0" [duration]="1.2" 
+        (countoChange)="counto = $event" >{{counto | number: '1.0-2'}}%</h2>
     </div>
     <br/>
   </div>

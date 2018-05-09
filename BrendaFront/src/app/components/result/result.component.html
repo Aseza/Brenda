@@ -1,24 +1,30 @@
-<div class="result-card card hoverable grey lighten-4">
+<div class="result-card card hoverable"
+[ngClass]="{'ddark-blue': themeService.isNightModeOn,'grey lighten-4':!themeService.isNightModeOn}" >
     <div class="progress" *ngIf="resultPreloader">
         <div class="indeterminate indigo"></div>
     </div>
-  <div class="card-content white-text">
-    <span class="card-title center black-text " >List Of Projects</span>
+  <div class="card-content">
+    <span class="card-title center" 
+    [ngClass]="{'white-text': themeService.isNightModeOn,'black-text':!themeService.isNightModeOn}"
+    >List Of Projects</span>
     <br/>
-    <ul class="collapsible" data-collapsible="accordion">
+    <ul class="collapsible" data-collapsible="accordion"
+    [ngClass]="{'grey lighten-1': themeService.isNightModeOn}" >
+
       <ng-container *ngIf="projects">
-          <li *ngFor="let project of projects">
-            <div class="black-text collapsible-header">
-              <i class="black-text material-icons">assignment</i>{{project.name}}</div>
-            <div class="black-text collapsible-body">
+          <li *ngFor="let project of projects" >
+            <div class="collapsible-header" [ngClass]="{'grey lighten-1': themeService.isNightModeOn}">
+              <i class="material-icons">assignment</i>{{project.name}}
+            </div>
+            <div class="collapsible-body">
               <span style="display: block" class="col s12 m10 l9 ">{{project.description}}</span>
             <div class="center-align right col s12 m2 l3">
-              <span class="red white-text" style="padding: 8px;display: block">{{project.deadLine}}</span>
-              <a class="btn-floating btn-small waves-effect waves-light red left" style="margin-top: 4px" (click)="remove(project.id,$event)">
+              <span class="red " style="padding: 8px;display: block">{{project.deadLine}}</span>
+              <a class="btn-floating btn-small waves-effect waves-light red right-align" (click)="remove(project.id,$event)">
                   <i class="material-icons">remove</i>
                 </a>
                 <a class="btn-floating btn-small waves-effect waves-light blue lighten-2 right" 
-                [ngClass]="{'modal-trigger':shouldBeOpen}" href="#modal1" style="margin-top: 4px"
+                [ngClass]="{'modal-trigger':shouldBeOpen}" href="#modal1"
                 (click)="updateProject(project.id,project.name,project.description,project.deadLine,$event)">
                   <i class="material-icons">edit</i>
                 </a>
@@ -27,9 +33,10 @@
           </li>
       </ng-container>
     </ul>
-    <ul class="pagination center">
-      <li class="waves-effect"  *ngFor="let page of pagesNumber; let i=index" [ngClass]="{'active': shouldBeActive[i]}">
-        <a (click)="SetPageActive(i);SendPagingSignal($event, i, 4)">{{i+1}}</a>
-    </ul>
+    <ul class="right">
+        <li *ngFor="let page of pagesNumber | paginate: { itemsPerPage: 4, currentPage: p }; let i=index" class="waves-effect">
+          </li>
+      </ul>
+      <pagination-controls  (pageChange)="p = $event;SendPagingSignal($event, 4)"></pagination-controls>
   </div>
 </div>

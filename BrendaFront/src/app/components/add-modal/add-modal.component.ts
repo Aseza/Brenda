@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../../services/dataService/data-service.service';
-declare var swal : any;
-declare var Materialize : any;
+declare var swal: any;
+declare var Materialize: any;
 
 @Component({
   selector: 'app-add-modal',
@@ -11,28 +11,25 @@ declare var Materialize : any;
 export class AddModalComponent implements OnInit {
 
   @Input('modal')
-  modal  : any ;
-  dataService : DataService;
-  constructor(dataService : DataService) {
-    console.log('Modal constructed');
-    this.dataService = dataService;  
+  modal: any ;
+  constructor(private dataService: DataService) {
   }
 
-   createProject(name:string, description :string, deadline : string){
-    if(!name  || !deadline  || !description ) {
+   createProject(name: string, description: string, deadline: string) {
+    if (!name  || !deadline  || !description ) {
       Materialize.toast('All inputs are required', 2000);
       return;
     }
-    this.dataService.createProject(name,description,deadline).subscribe((res)=>{
-      swal("Project Succesfully Added!", "", "success");
+    this.dataService.createProject(name, description, deadline).subscribe((res) => {
+      swal('Project Succesfully Added!', '', 'success');
     });
-  } 
+  }
 
-  updateProject(){ 
-    console.log('the modal contains: '+this.modal);
-    console.log('updating...'+name);
-    this.dataService.updateProject(this.modal.id,this.modal.name,this.modal.description,this.modal.deadline).subscribe();
-    swal("Project Succesfully Edited!", "i think :)", "success");
+  updateProject() {
+    console.log('the modal contains: ' + this.modal);
+    console.log('updating...' + name);
+    this.dataService.updateProject(this.modal.id, this.modal.name, this.modal.description, this.modal.deadline).subscribe();
+    swal('Project Succesfully Edited!', ':)', 'success');
   }
 
   ngOnInit() {

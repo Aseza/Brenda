@@ -1,15 +1,22 @@
-<nav class=" blue darken-3 " role="navigation">
+<nav class="ddark-blue" [ngClass]="{'blue darken-3':!isNightModeOn}" role="navigation">
   <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="white-text light brand-logo">
           <i class="material-icons">library_books</i>{{logo}}</a>
       <ul class="right hide-on-med-and-down">
           <li>
               <a class="white-text active" href="#">in Angular 4
-                  <span class="new badge red" data-badge-caption="Live">4</span>
+                  <span class="new badge red" >4</span>
+                  <!-- [data-badge-caption]="usersConnectedNumber" -->
               </a>
           </li>
+          <li class="switch" style="display: inline-flex;">
+                    <label>Night Mode
+                    <input [disabled]="disabled" type="checkbox" [checked]="isNightModeOn" (change)="isNightModeOn = !isNightModeOn;changed()">
+                    <span class="lever"></span>
+                    </label>
+        </li>
       </ul>
-
+      <!-- [ngStyle]="{'background-color':person.country === 'UK' ? 'green' : 'red' }" -->
       <ul id="nav-mobile" class="side-nav">
           <li>
           <a class="black-text" href="#">in Angular 4

@@ -7,3 +7,12 @@
   main {
     flex: 1;
   }
+  .ddark-blue {
+    background-color: #2C3E50;
+}
+.search-card, .result-card, nav, footer  {
+  min-width: 350px;
+}
+.marine-blue {
+  background-color: #2B5A84;
+}
