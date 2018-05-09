@@ -45,16 +45,19 @@ public class ProjectDAOAbstractionImpl implements ProjectDAO_Abstraction {
 			return 0;
 		}
 	}
-
+	int size= -1;
 	@Override
 	public Map<Integer, List<Project>> getProjectsLike(String word,int minIndex, int maxIndex) {
 		Pageable topTen = new PageRequest(minIndex, maxIndex);
 		List<Project> temp =(List<Project>) projectRepo.findByNameContaining(word,topTen);
-		int size = projectRepo.findByNameContaining(word).size();
+		size = projectRepo.findByNameContaining(word).size();
 		Map<Integer, List<Project>> list = new HashMap<Integer, List<Project>>();
 		list.put(size,temp);
 		return list;
-
+	}
+	@Override
+	public double getRatio() {
+		return (double)size/projectRepo.count();
 	}
 
 

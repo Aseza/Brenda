@@ -22,29 +22,40 @@ public class UserController {
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<Integer, List<Project>> getProjectsLike(@RequestParam String word, @RequestParam int minIndex, @RequestParam int maxIndex) {
+		if(word=="") {
+			throw new IllegalArgumentException("Word Cannot Be Empty");
+		}
+		System.out.println(projectAbstractDao.getProjectsLike(word, minIndex, maxIndex));
 		return projectAbstractDao.getProjectsLike(word, minIndex, maxIndex);
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/remove", method = RequestMethod.GET)
+	@RequestMapping(value = "/remove", method = RequestMethod.DELETE)
 	public @ResponseBody void removeProject(@RequestParam long id){
 		 projectAbstractDao.removeProject(id);
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public @ResponseBody
-	long createProject(@RequestParam String name, @RequestParam String desc, @RequestParam Date deadline){
-		return projectAbstractDao.createProject(new Project(name,desc,deadline));
+	long createProject(@RequestBody Project pro){
+		System.out.println("Adding a project: "+pro);
+		return projectAbstractDao.createProject(pro);
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public @ResponseBody
-	void removeProject(@RequestParam int id, @RequestParam String name, @RequestParam String desc, @RequestParam Date deadline){
-		projectAbstractDao.updateProject(id,new Project(name,desc,deadline));
+	void removeProject(@RequestBody Project pro){
+		System.out.println("Project Updating... "+ pro);
+		projectAbstractDao.updateProject(pro.getId(),pro);
 	}
-
+	@CrossOrigin
+	@RequestMapping(value = "/ratio", method = RequestMethod.GET)
+	public @ResponseBody
+	double getRatio(){
+	return projectAbstractDao.getRatio();
+	}
 
 
 }

@@ -11,5 +11,5 @@ public interface ProjectDAO_Abstraction {
 	long createProject(Project project);
 	int updateProject(long id, Project project);
 	Map<Integer, List<Project>> getProjectsLike(String word, int minIndex, int maxIndex);
-
+	double getRatio();
 }
