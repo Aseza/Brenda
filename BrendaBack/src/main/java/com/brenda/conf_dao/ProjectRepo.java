@@ -1,9 +1,11 @@
 package com.brenda.conf_dao;
 
 
-import com.brenda.model.Project;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import com.brenda.models.Project;
+
 import org.springframework.data.domain.Pageable;
 import java.util.List;
 
