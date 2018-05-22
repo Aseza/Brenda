@@ -2,6 +2,7 @@ package com.brenda.dao_abstract;
 
 import com.brenda.conf_dao.ProjectRepo;
 import com.brenda.models.Project;
+import com.brenda.utilities.DateConversion;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +24,7 @@ public class ProjectDAOImpl implements ProjectDAO{
 
 	@Autowired
 	private ProjectRepo projectRepo;
+	int size= -1;
 
 	@Override
 	public void removeProject(long id) {
@@ -46,11 +50,10 @@ public class ProjectDAOImpl implements ProjectDAO{
 			return 0;
 		}
 	}
-	int size= -1;
 	@Override
 	public Map<Integer, List<Project>> getProjectsLike(String word,int minIndex, int maxIndex) {
 		Pageable page = new PageRequest(minIndex, maxIndex);
-		List<Project> temp =(List<Project>) projectRepo.findByNameContaining(word,page);
+		List<Project> temp = projectRepo.findByNameContaining(word,page);
 		size = projectRepo.findByNameContaining(word).size();
 		Map<Integer, List<Project>> list = new HashMap<Integer, List<Project>>();
 		list.put(size,temp);
@@ -60,6 +63,5 @@ public class ProjectDAOImpl implements ProjectDAO{
 	public double getRation() {
 		return (double)size/projectRepo.count();
 	}
-
 
 }

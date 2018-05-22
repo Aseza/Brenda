@@ -1,0 +1,24 @@
+    <div class="col s12">
+      <div class="card ">
+        <div class="card-content white-text">
+          <span class="card-title black-text center">Projects Details</span>
+          <table class="bordered striped centered responsive black-text">
+              <thead class="">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Deadline</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td >{{name}}</td>
+                  <td>{{desc}}</td>
+                  <td class="orange-text"><strong>{{deadline  | date: 'dd-MM-yyyy'}}</strong></td>
+                </tr>
+              </tbody>
+            </table>       
+        </div>
+      </div>
+    </div>
+        

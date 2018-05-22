@@ -1,15 +1,11 @@
-<div class="card hoverable"
-[ngClass]="{'ddark-blue': themeService.isNightModeOn,'grey lighten-4':!themeService.isNightModeOn}" >
 
-  <div class="card-content"
-  [ngClass]="{'white-text': themeService.isNightModeOn,'black-text':!themeService.isNightModeOn}"
-  >
-    <span class="card-title center ">DB Ratio</span>
-    <div class="row">
-        <!-- <h1 class="black-text light center">{{(ratio | number)*100}}%</h1>  -->
-        <h2 class="truncate light center" counto [step]="30" [countTo]="ratio*100" [countFrom]="0" [duration]="1.2" 
-        (countoChange)="counto = $event" >{{counto | number: '1.0-2'}}%</h2>
-    </div>
-    <br/>
-  </div>
+<div class="card ratio-card center"
+[ngClass]="{'ddark-blue': themeService.isNightModeOn,'white':!themeService.isNightModeOn}">
+   <span 
+      class="activator card-title light center "
+      [ngClass]="{'white-text':themeService.isNightModeOn}"
+      *ngIf="ratiosInfo && ratiosInfo[0] "
+      counto [step]="30" [countTo]="  this.myChart.data.datasets[0].data[9]*100" [countFrom]="0" [duration]="1.2" 
+      (countoChange)="counto = $event" >{{counto | number: '1.0-2'}}%</span>
+    <canvas id="myChart" width="400" height="250"></canvas>
 </div>

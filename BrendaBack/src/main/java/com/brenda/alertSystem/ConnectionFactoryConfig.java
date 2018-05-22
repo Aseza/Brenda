@@ -1,4 +1,4 @@
-package com.brenda.websocket;
+package com.brenda.alertSystem;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.Queue;
@@ -26,13 +26,21 @@ public class ConnectionFactoryConfig {
 	
 	@Value("${jsa.activemq.borker.password}")
 	String password;
-	@Bean
-	public Topic topic() {
-			return new ActiveMQTopic("Hydra");
+	
+	@Bean(name="AddAlert")
+	public Topic addAlertTopic() {
+			return new ActiveMQTopic("AddAlert");
 	}
-	/*
-	 * Initial ConnectionFactory
-	 */
+	
+	@Bean(name="DeadLineAlert")
+	public Topic deadLineAlertTopic() {
+			return new ActiveMQTopic("DeadLineAlert");
+	}
+	@Bean(name="OverdueAlert")
+	public Topic OverdueAlertTopic() {
+			return new ActiveMQTopic("OverdueAlert");
+	}
+
     @Bean
     public ConnectionFactory connectionFactory(){
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../services/themeService/theme.service';
+import { WebSocketService } from '../../services/webSocketService/web-socket.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,14 @@ import { ThemeService } from '../../services/themeService/theme.service';
 export class NavbarComponent implements OnInit {
   logo = 'Brenda';
   isNightModeOn = false;
-  constructor(private themeService: ThemeService) {
+  constructor(private _themeService?: ThemeService) {
    }
-
+   get themeService() {
+    return this._themeService;
+  }
+  set themeService(themeService: ThemeService) {
+    themeService = this._themeService;
+  }
   ngOnInit() {
   }
   changed() {

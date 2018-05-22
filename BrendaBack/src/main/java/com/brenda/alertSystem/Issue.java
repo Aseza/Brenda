@@ -1,4 +1,4 @@
-package com.brenda.websocket;
+package com.brenda.alertSystem;
 
 import java.util.Date;
 

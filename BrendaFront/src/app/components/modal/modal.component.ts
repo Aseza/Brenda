@@ -4,17 +4,22 @@ declare var swal: any;
 declare var Materialize: any;
 
 @Component({
-  selector: 'app-add-modal',
-  templateUrl: './add-modal.component.html',
-  styleUrls: ['./add-modal.component.css']
+  selector: 'app-modal',
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.css']
 })
-export class AddModalComponent implements OnInit {
+export class ModalComponent implements OnInit {
 
   @Input('modal')
   modal: any ;
-  constructor(private dataService: DataService) {
+  constructor(private _dataService?: DataService) {
   }
-
+  get dataService() {
+    return this._dataService;
+  }
+  set dataService(dataService: DataService) {
+    dataService = this._dataService;
+  }
    createProject(name: string, description: string, deadline: string) {
     if (!name  || !deadline  || !description ) {
       Materialize.toast('All inputs are required', 2000);

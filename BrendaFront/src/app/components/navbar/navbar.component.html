@@ -1,31 +1,38 @@
-<nav class="ddark-blue" [ngClass]="{'blue darken-3':!isNightModeOn}" role="navigation">
-  <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="white-text light brand-logo">
+<div class="navbar-fixed">
+
+<nav class=" ddark-blue" [ngClass]="{'blue darken-3':!isNightModeOn}" role="navigation">
+  <div class="container nav-wrapper">
+      <a id="logo-container" href="#" style="margin-left:20px " class="white-text light brand-logo">
           <i class="material-icons">library_books</i>{{logo}}</a>
       <ul class="right hide-on-med-and-down">
-          <li>
-              <a class="white-text active" href="#">in Angular 4
-                  <span class="new badge red" >4</span>
-                  <!-- [data-badge-caption]="usersConnectedNumber" -->
-              </a>
-          </li>
-          <li class="switch" style="display: inline-flex;">
+          <app-alert></app-alert>
+         
+            <li class="switch" style="display: inline-flex;">
                     <label>Night Mode
-                    <input [disabled]="disabled" type="checkbox" [checked]="isNightModeOn" (change)="isNightModeOn = !isNightModeOn;changed()">
+                    <input type="checkbox" [checked]="isNightModeOn" (change)="isNightModeOn = !isNightModeOn;changed()">
                     <span class="lever"></span>
                     </label>
         </li>
       </ul>
-      <!-- [ngStyle]="{'background-color':person.country === 'UK' ? 'green' : 'red' }" -->
-      <ul id="nav-mobile" class="side-nav">
-          <li>
-          <a class="black-text" href="#">in Angular 4
-              <span class="new badge red" data-badge-caption="Live"></span>
-          </a>
-          </li>
+      <ul id="nav-mobile" class="side-nav fixed" style="width: 250px;margin-top: 64px;">
+        <li><div class="user-view">
+            <div class="background">
+              <img src="../../../assets/static/images/background-sidenav.jpg">
+            </div>
+            <a href="#!user"><img class="circle" src="../../../assets/static/images/face.jpg"></a>
+            <a href="#!name"><span class="white-text name">Abdelilah</span></a>
+            <a href="#!email"><span class="white-text email">Abdelilah.Ouchani@ma.ibm.com</span></a>
+          </div></li>
+          <li><a href="#!"><i class="material-icons">cloud</i>I'll add stuff here </a></li>
+          <li><a href="#!">and here</a></li>
+          <li><div class="divider"></div></li>
+          <li><a class="subheader">also here, this is a subheader</a></li>
+          <li><a class="waves-effect" href="#!">ofc here</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse">
           <i class="material-icons white-text">menu</i>
       </a>
   </div>
+
 </nav>
+</div>

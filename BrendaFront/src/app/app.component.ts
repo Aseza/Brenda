@@ -1,5 +1,4 @@
 import { Component , Input, AfterViewInit, ViewChild } from '@angular/core';
-import { ResultComponent } from './components/result/result.component';
 import { ThemeService } from './services/themeService/theme.service';
 @Component({
   selector: 'app-root',
@@ -11,31 +10,26 @@ export class AppComponent {
   pagesNumber: number[];
   projects: any[];
   indexesObject: any;
-  ratio: number;
+  ratiosInfo: any[];
   isNightModeOn = false;
   url: string = this.themeService.isNightModeOn ?
-  './../assets/static/images/parallaxNight.jpg' : './../assets/static/images/parallaxDay.jpg';
-  constructor(private themeService: ThemeService) {
-    this.isNightModeOn = themeService.isNightModeOn;
+'./../assets/static/images/parallaxNight.jpg' : './../assets/static/images/parallaxDay.jpg';
+  constructor(private _themeService?: ThemeService) {
+    this.isNightModeOn = _themeService.isNightModeOn;
   }
-  @ViewChild(ResultComponent) child: ResultComponent;
-  recieveModalFromResult($event) {
+  get themeService() {
+    return this._themeService;
+  }
+  set themeService(themeService: ThemeService) {
+    themeService = this._themeService;
+  }
+  recieveModalFromResultNsearch($event) {
     this.modalObject = $event;
+    console.log(this.modalObject);
   }
-  receiveIndexes($event) {
-    this.indexesObject = $event;
-  }
-  recieveModalFromSearch($event) {
-    this.modalObject = $event;
-  }
-  recieveProjectsFromSearch($event) {
-    const size_and_index = Object.keys($event)[0];
-    this.pagesNumber = Array(Math.ceil(+(size_and_index) / 4));
-    this.projects = $event[size_and_index];
-  }
-  recieveRatioFromRatioComponent($event) {
-    console.log(this.url);
-    this.ratio = $event;
+
+  recieveRatioFromResultNsearch($event) {
+    this.ratiosInfo = $event;
   }
 
 }
