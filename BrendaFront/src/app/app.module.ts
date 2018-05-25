@@ -21,8 +21,9 @@ import { IntroComponent } from './intro/intro.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectDetailsComponent } from './components/project-details/project-details.component';
-import { AllProjectsDetailsComponent } from './components/all-projects-details/all-projects-details.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { RightSideNavComponent } from './components/right-side-nav/right-side-nav.component';
+import { LeftSideNavComponent } from './components/left-side-nav/left-side-nav.component';
 
 
 const appRoutes: Routes = [
@@ -41,8 +42,9 @@ const appRoutes: Routes = [
     IntroComponent,
     AlertComponent,
     ProjectDetailsComponent,
-    AllProjectsDetailsComponent
-  ],
+    RightSideNavComponent,
+    LeftSideNavComponent
+    ],
   imports: [
     BrowserModule,
     HttpClientModule ,

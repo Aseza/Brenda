@@ -10,7 +10,6 @@ declare var swal: any;
   styleUrls: ['./result-nsearch.component.css']
 })
 export class ResultNsearchComponent {
-  word: string;
   searchPreloader = false;
   isNoResponse = true;
   pagesNumber;
@@ -23,6 +22,7 @@ export class ResultNsearchComponent {
   modalObject  = {'id': 0, 'name': '', 'description': '', 'deadline': '', 'option': 1};
   shouldBeOpen = false;
   collection: number[] = [];
+  @Input() word: string;
 
   constructor(private _dataService?: DataService, private _themeService?: ThemeService) {
     this.projects = [];
@@ -61,6 +61,7 @@ export class ResultNsearchComponent {
       this.projects = result[size_and_index];
       this.isProjectsExist = true;
       this.searchPreloader = false;
+
       this.dataService.getRatios().subscribe((ratios: any[]) => {
         const ratiosValues: number[] = ratios.map(obj => obj.id);
         const ratiosIds: number[] = ratios.map(obj => obj.ratio);

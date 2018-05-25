@@ -15,22 +15,18 @@ declare var Materialize: any;
 export class WebSocketService {
   projectBeforeDeadline: any[];
   overdueProjects: any[];
-
-  constructor(private _stompService: StompService, private _dataService: DataService) {
-    this._stompService.subscribe('/topic/DeadLineAlert').map((message) =>  {
+  isInfoLoaded = false ;
+  projectBeforeDeadLineObservable: Observable<WsMessage>;
+  overdueProjectsObservable: Observable<WsMessage>;
+  constructor(public _stompService: StompService, private _dataService: DataService) {
+    this.projectBeforeDeadLineObservable = this._stompService.subscribe('/topic/DeadLineAlert').map((message) =>  {
       const res: WsMessage = JSON.parse(message.body);
        return res;
-    } ).subscribe((res: any) => {
-        this.projectBeforeDeadline = res;
-});
-this._stompService.subscribe('/topic/OverdueAlert').map((message) =>  {
+    } ) ;
+this.overdueProjectsObservable = this._stompService.subscribe('/topic/OverdueAlert').map((message) =>  {
   const res: WsMessage = JSON.parse(message.body);
    return res;
-} ).subscribe((res: any) => {
-    this.overdueProjects = res.slice(0, 4);
-    console.log('OVERDUE PROJETCQ ',this.overdueProjects);
-    
-});
+} );
    }
 
 }

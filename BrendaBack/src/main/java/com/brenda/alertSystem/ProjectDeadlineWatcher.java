@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.brenda.conf_dao.ProjectRepo;
+import com.brenda.utilities.DateConversion;
 
 @Component
 public class ProjectDeadlineWatcher {
@@ -30,7 +31,7 @@ public class ProjectDeadlineWatcher {
 	
 	@Scheduled(fixedRate = 10000)
     public void findProjectsEndingOnDate() {
-		jmsTemplate.convertAndSend(deadlineAlert, projectRepo.findProjectsEndingOnDate(new Date(2018-1900,4,27))); 
+		jmsTemplate.convertAndSend(deadlineAlert, projectRepo.findProjectsEndingOnDate(DateConversion.TODAY_DATE_5)); 
     }
 	@Scheduled(fixedRate = 10000)
     public void findOverdueProjects() {

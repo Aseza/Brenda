@@ -1,67 +1,43 @@
 <li>
-    <a class=" dropdown-button light-text" data-beloworigin="true" data-activates='dropdown1'>
+    <a class=" dropdown-button light-text" data-beloworigin="true" data-activates='dropdown1'  >
             <i class="material-icons">notifications</i>
-            <span *ngIf="webSocketService.projectBeforeDeadline" id="notification-count">{{
-                webSocketService.projectBeforeDeadline.length+webSocketService.overdueProjects.length}}</span>
+            <span *ngIf="projectBeforeDeadline" id="notification-count">{{
+               projectBeforeDeadline.length+overdueProjects.length}}</span>
     </a>
 </li>
-<li  >
+<li>
     <ul id='dropdown1' class='dropdown-content notification-list'>
-      <li class="notification-list-item"  *ngFor="let item of webSocketService.projectBeforeDeadline">
-          <a [routerLink]="['/projectDetails',item.name,item.description,item.deadLine]" 
-          class="black-text" [ngx-scroll-to]="'#details'" href="#details">
+      <li class="notification-list-item"  *ngFor="let item of projectBeforeDeadline">
+          <a  class="black-text projectLink" >
            <i class="material-icons">assignment</i>
-           {{item.name}},
+           <span [routerLink]="['/projectDetails',item.name,item.description,item.deadLine]"
+           [ngx-scroll-to]="'#details'">{{item.name}},</span>
            <span class="light orange-text">5 days remaining</span>
+           <i (click)="refClick()" class="right material-icons" style="margin:0px">close</i>
         </a>
         </li>
-        <li class="notification-list-item"  *ngFor="let item of webSocketService.overdueProjects">
-                <a class="black-text">
+        <li class="notification-list-item"  *ngFor="let item of overdueProjects">
+                <a  [ngx-scroll-to]="'#details'" [routerLink]="['/projectDetails',item.name,item.description,item.deadLine]" class="black-text projectLink">
                  <i class="red-text material-icons">cancel</i>
                  {{item.name}},
                  <span class="red-text">OVERDUE: {{item.deadLine | date: 'dd/MM'}}</span>
               </a>
         </li>
         <li>
-                <a class="center see-all-button black-text">See All</a>
+                <a class="center see-all-button black-text" (click)="openRightNav()">See All</a>
             </li>
         </ul>
 </li>
 
-
-
-
 <style>
-
-.notification-list {
-        background-color: #FAFAFA;
+    i.right.material-icons {
+    margin:0px;
 }
-.notification-list-item{
-    background-color: #EAE7E7;
-    margin-top : 10px;
-    margin-left:20px;
-    margin-right:20px;
-    width: 300px;
+    i.right.material-icons:hover {
+    color: red;
+    font-size: 30px;
 }
-.see-all-button:hover {
- background-color: white;
- text-decoration: underline;
+.projectLink:hover {
+    text-decoration: underline;
 }
-#notification-count {
-    margin-left: 5px;
-    height: 14px;
-    border-radius: 8px;
-    box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.26);
-    color: #f2f2f2;
-    display: inline-block;
-    font: bold 12px Roboto, Arial, Helvetica, sans-serif;
-    line-height: 14px;
-    min-height: 14px;
-    min-width: 20px;
-    position: absolute;
-    text-align: center;
-    top: 11px;
-    background: red;
-}
-
 </style>

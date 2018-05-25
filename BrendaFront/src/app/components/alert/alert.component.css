@@ -1,0 +1,31 @@
+
+.notification-list {
+    background-color: #FAFAFA;
+}
+.notification-list-item{
+background-color: #EAE7E7;
+margin-top : 10px;
+margin-left:20px;
+margin-right:20px;
+width: 300px;
+}
+.see-all-button:hover {
+background-color: white;
+text-decoration: underline;
+}
+#notification-count {
+margin-left: 5px;
+height: 14px;
+border-radius: 8px;
+box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.26);
+color: #f2f2f2;
+display: inline-block;
+font: bold 12px Roboto, Arial, Helvetica, sans-serif;
+line-height: 14px;
+min-height: 14px;
+min-width: 20px;
+position: absolute;
+text-align: center;
+top: 11px;
+background: red;
+}

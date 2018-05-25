@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../services/themeService/theme.service';
 import { WebSocketService } from '../../services/webSocketService/web-socket.service';
+import { locateHostElement } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-navbar',

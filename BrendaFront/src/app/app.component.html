@@ -1,19 +1,20 @@
 <app-navbar></app-navbar>
-<div class="alla parallax-container hide-on-small-only">
+<div class="parallax-container hide-on-small-only" style="height: 700px">
         <div class="section no-pad-bot">
           <div class="container">
             <h1 class="header center white-text light">Brenda Project</h1>
             <div class="row center">
               <h5 class="header col s12 light white-text">One Simple CRUD Application</h5>
             </div>
-            <!-- <div class="row">
-                <div class="">
-                    <app-result-nsearch (modalEmitter)="recieveModalFromResultNsearch($event)"
-                    (ratioEmitter)="recieveRatioFromResultNsearch($event)"></app-result-nsearch>
+            <div class="row center " style="width:55%">
+                <div class="input-field col s12" style="margin-left:40%">
+                  <input [(ngModel)]="word" id="main-search" type="text" class="center-text validate white-text">
+                  <label for="main-search">Search Here</label>
                 </div>
-            </div> -->
+              </div>
+
             <div class="row center">
-              <a href="#try" id="" class="btn-large waves-effect waves-light blue lighten-1">Try it</a>
+              <a href="#try" id="" class="btn-large waves-effect waves-light blue lighten-1">Search it</a>
 
             </div>
           </div>
@@ -23,16 +24,16 @@
       </div>
 </div>
 
-<div class="alla section marine-blue" [ngClass]="{'grey lighten-3':!themeService.isNightModeOn}"  >
+<div class="section marine-blue" [ngClass]="{'grey lighten-3':!themeService.isNightModeOn}"  >
       <!-- <div class="">
         <app-intro></app-intro>
        </div> -->
           <div class="row">
               <div class="col s12 m6 ">
-                  <app-result-nsearch (modalEmitter)="recieveModalFromResultNsearch($event)"
+                  <app-result-nsearch [word]="word" (modalEmitter)="recieveModalFromResultNsearch($event)"
                   (ratioEmitter)="recieveRatioFromResultNsearch($event)"></app-result-nsearch>
               </div>
-            <div class="col s12 m6 section scrollspy " id="try">           
+            <div  class="col s12 m6 section scrollspy " id="try">           
               <app-ratio [ratiosInfo]="ratiosInfo" ></app-ratio>
             </div>
         </div>

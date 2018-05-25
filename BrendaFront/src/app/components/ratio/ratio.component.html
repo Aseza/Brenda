@@ -4,8 +4,8 @@
    <span 
       class="activator card-title light center "
       [ngClass]="{'white-text':themeService.isNightModeOn}"
-      *ngIf="ratiosInfo && ratiosInfo[0] "
+      *ngIf="ratiosInfo && ratiosInfo[0]"
       counto [step]="30" [countTo]="  this.myChart.data.datasets[0].data[9]*100" [countFrom]="0" [duration]="1.2" 
       (countoChange)="counto = $event" >{{counto | number: '1.0-2'}}%</span>
-    <canvas id="myChart" width="400" height="250"></canvas>
+    <canvas  id="myChart" width="400" height="250"></canvas>
 </div>

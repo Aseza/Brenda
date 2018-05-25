@@ -12,6 +12,7 @@ export class AppComponent {
   indexesObject: any;
   ratiosInfo: any[];
   isNightModeOn = false;
+  word = 'GEll;';
   url: string = this.themeService.isNightModeOn ?
 './../assets/static/images/parallaxNight.jpg' : './../assets/static/images/parallaxDay.jpg';
   constructor(private _themeService?: ThemeService) {

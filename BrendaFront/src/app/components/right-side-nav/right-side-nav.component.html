@@ -1,0 +1,29 @@
+<ul id="nav-mobile2" class="side-nav">
+    <div class="row">
+            <div class="col s12">
+              <ul class="tabs">
+                <li class="tab col s12"><a href="#notifications">Notifications</a></li>
+              </ul>
+            </div>
+            <div id="notifications" class="col s12 black-text">
+                <div class="row"></div>
+                <div class="row"></div>
+                <li><div class="divider"></div></li>
+                <li class="grey lighten-2"><a class="subheader light center">Deadline Approching...</a></li>
+
+                <li><div class="divider"></div></li>
+                <li *ngFor="let item of projectBeforeDeadLine">
+                      <a class="waves-effect"><i class="material-icons">assignment</i>{{item.name}}<span class="right orange-text">{{item.deadline | date: 'dd/MM'}}</span></a></li>
+                <li><div class="divider"></div></li>
+
+                <li class="red lighten-1"><a class="subheader light center white-text">OVERDUE</a></li>
+                <li><div class="divider"></div></li>
+                <li *ngFor="let item of overdueProjects">
+                <a class="waves-effect"><i class="red-text material-icons">cancel</i>{{item.name}} <span style="text-decoration: underline" class="right red-text">{{item.deadline | date: 'dd/MM'}}</span></a></li>
+                    <!-- <li><a class="subheader">also here, this is a subheader</a></li> -->
+            </div>
+          </div>
+                
+ 
+</ul>
+<a data-activates="nav-mobile2" class="button-collapse rightNav"></a>

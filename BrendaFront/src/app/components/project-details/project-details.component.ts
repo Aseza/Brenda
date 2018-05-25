@@ -15,12 +15,10 @@ export class ProjectDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log(params);
-
       this.name = params['name'];
       this.desc = params['desc'];
       this.deadline = params['deadline'];
 
-      // In a real app: dispatch action to load the details here.
    });
   }
 
