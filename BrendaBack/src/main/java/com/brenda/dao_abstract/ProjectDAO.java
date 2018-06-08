@@ -1,11 +1,9 @@
 package com.brenda.dao_abstract;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.data.jpa.repository.Query;
-
+import com.brenda.conf_dao.ProjectRepo;
 import com.brenda.models.Project;
 
 public interface ProjectDAO {
@@ -14,5 +12,6 @@ public interface ProjectDAO {
 	int updateProject(long id, Project project);
 	Map<Integer, List<Project>> getProjectsLike(String word, int minIndex, int maxIndex);
 	double getRation();
+	public int[] getProjectsOverview();
 
 }

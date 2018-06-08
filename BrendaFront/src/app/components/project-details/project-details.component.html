@@ -1,4 +1,4 @@
-    <div class="col s12 m10">
+    <div class="col s12 m7">
       <div class="card ">
         <div class="card-content white-text">
           <span class="card-title black-text center">Projects Details</span>
@@ -11,14 +11,24 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td >{{name}}</td>
-                  <td>{{desc}}</td>
-                  <td class="orange-text"><strong>{{deadline  | date: 'dd-MM-yyyy'}}</strong></td>
+                <tr *ngFor="let item of projectBeforeDeadline">
+                  <td>{{item.name}}</td>
+                  <td>{{item.description}}</td>
+                  <td class="red-text"><strong>{{item.deadline  | relativeDate}}</strong></td>
+                </tr>
+                <tr *ngFor="let item of overdueProjects">
+                  <td>{{item.name}}</td>
+                  <td>{{item.description}}</td>
+                  <td class="red-text"><strong>{{item.deadline}}</strong></td>
                 </tr>
               </tbody>
             </table>       
         </div>
       </div>
     </div>
-        
+    <style>
+    .red-bordered {
+      border-top: 2pt solid red;
+      border-bottom: 2pt solid red
+    }
+    </style>

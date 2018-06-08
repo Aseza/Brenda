@@ -19,7 +19,7 @@
                 <li class="red lighten-1"><a class="subheader light center white-text">OVERDUE</a></li>
                 <li><div class="divider"></div></li>
                 <li *ngFor="let item of overdueProjects">
-                <a class="waves-effect"><i class="red-text material-icons">cancel</i>{{item.name}} <span style="text-decoration: underline" class="right red-text">{{item.deadline | date: 'dd/MM'}}</span></a></li>
+                <a class="waves-effect"><i class="red-text material-icons">cancel</i>{{item.name}} <span style="text-decoration: underline" class="right red-text">{{item.deadline | relativeDate}}</span></a></li>
                     <!-- <li><a class="subheader">also here, this is a subheader</a></li> -->
             </div>
           </div>

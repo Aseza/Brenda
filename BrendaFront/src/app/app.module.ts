@@ -17,13 +17,14 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {StompConfig, StompService} from '@stomp/ng2-stompjs';
 import { stompConfig } from './services/environement';
 import { ResultNsearchComponent } from './components/result-nsearch/result-nsearch.component';
-import { IntroComponent } from './intro/intro.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { RightSideNavComponent } from './components/right-side-nav/right-side-nav.component';
 import { LeftSideNavComponent } from './components/left-side-nav/left-side-nav.component';
+import { ProlifeComponent } from './components/prolife/prolife.component';
+import { RelativeDatePipe } from './relativeDate.pipe';
 
 
 const appRoutes: Routes = [
@@ -39,11 +40,12 @@ const appRoutes: Routes = [
     SideNavComponent,
     RatioComponent,
     ResultNsearchComponent,
-    IntroComponent,
     AlertComponent,
     ProjectDetailsComponent,
     RightSideNavComponent,
-    LeftSideNavComponent
+    LeftSideNavComponent,
+    ProlifeComponent,
+    RelativeDatePipe
     ],
   imports: [
     BrowserModule,

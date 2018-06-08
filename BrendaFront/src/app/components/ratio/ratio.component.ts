@@ -4,6 +4,7 @@ import { ThemeService } from '../../services/themeService/theme.service';
 import { WebSocketService } from '../../services/webSocketService/web-socket.service';
 import { Chart } from 'chart.js';
 
+
 @Component({
   selector: 'app-ratio',
   templateUrl: './ratio.component.html',
@@ -45,7 +46,8 @@ update () {
   this.myChart.data.labels.push(this.ratiosInfo[0].pop());
   this.myChart.data.labels.shift();
   this.myChart.data.datasets.forEach((dataset) => {
-    // dataset.data.push(this.ratiosInfo[1].pop());
+      //dataset.data.push(this.ratiosInfo[1].pop());
+
       dataset.data.shift();
   });
   this.myChart.update();

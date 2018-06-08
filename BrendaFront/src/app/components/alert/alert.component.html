@@ -20,7 +20,7 @@
                 <a  [ngx-scroll-to]="'#details'" [routerLink]="['/projectDetails',item.name,item.description,item.deadLine]" class="black-text projectLink">
                  <i class="red-text material-icons">cancel</i>
                  {{item.name}},
-                 <span class="red-text">OVERDUE: {{item.deadLine | date: 'dd/MM'}}</span>
+                 <span class="red-text">{{item.deadLine | relativeDate}}</span>
               </a>
         </li>
         <li>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { WebSocketService } from '../../services/webSocketService/web-socket.service';
 
 @Component({
   selector: 'app-project-details',
@@ -10,7 +11,9 @@ export class ProjectDetailsComponent implements OnInit {
   name: string;
   desc: string;
   deadline: string;
-  constructor(private route: ActivatedRoute) { }
+  projectBeforeDeadline: any[];
+  overdueProjects: any[];
+  constructor(private route: ActivatedRoute, private webSocketService: WebSocketService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -18,6 +21,17 @@ export class ProjectDetailsComponent implements OnInit {
       this.name = params['name'];
       this.desc = params['desc'];
       this.deadline = params['deadline'];
+
+   });
+   console.log('SCX2 initialize');
+   this.webSocketService.projectBeforeDeadLineObservable.subscribe((res: any) => {
+     this.projectBeforeDeadline = res;
+     console.log('SCX2 Project Became True', res);
+   });
+
+   this.webSocketService.overdueProjectsObservable.subscribe((res: any) => {
+     this.overdueProjects = res.slice(0, 4);
+     console.log('SCX2 OVERDUE PROJETCQ ', this.overdueProjects);
 
    });
   }

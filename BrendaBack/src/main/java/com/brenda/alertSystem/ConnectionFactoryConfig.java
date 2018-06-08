@@ -1,7 +1,6 @@
 package com.brenda.alertSystem;
 
 import javax.jms.ConnectionFactory;
-import javax.jms.Queue;
 import javax.jms.Topic;
 
 import org.apache.activemq.ActiveMQConnectionFactory;

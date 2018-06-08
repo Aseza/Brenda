@@ -1,11 +1,9 @@
 package com.brenda.controller;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brenda.alertSystem.Issue;
 import com.brenda.alertSystem.JmsPublisher;
 import com.brenda.conf_dao.RationRepo;
 import com.brenda.dao_abstract.ProjectDAOImpl;
@@ -67,5 +64,9 @@ public class UserController {
 	public List<Ration> getRatios() {
 		return (List<Ration>) rationRepo.getLast10Ratios();
 	}
-
+	
+	@RequestMapping(value = "/getProjectsOverview", method = RequestMethod.GET)
+	public int[] getProjectsOverview() {
+		return  projectAbstractDao.getProjectsOverview();
+	}
 }

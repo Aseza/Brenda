@@ -1,7 +1,5 @@
 package com.brenda.alertSystem;
 
-import java.sql.Date;
-
 import javax.jms.Topic;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,10 @@
 package com.brenda.models;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
-public class Project implements Serializable{
+public class Project{
 
 	@Id
 	@Column
@@ -17,8 +16,7 @@ public class Project implements Serializable{
 	private String description;
 	@Column(name="deadline")
 	private Date deadline;
-	@Column(name="isDelivered")
-	private boolean isDelivered;
+
 	
 	public Project() { }
 	public long getId() {
@@ -30,12 +28,7 @@ public class Project implements Serializable{
 	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
 	}
-	public boolean isDelivered() {
-		return isDelivered;
-	}
-	public void setOverdue(boolean isDelivered) {
-		this.isDelivered = isDelivered;
-	}
+
 	public void setId(long id) {
 		this.id = id;
 	}

@@ -27,5 +27,8 @@ export class DataService {
   getRatios() {
     return this.http.get(envCons.BACK_URL + 'ratios');
   }
+  getProjectsOverview() {
+    return this.http.get(envCons.BACK_URL + 'getProjectsOverview');
+  }
 
 }

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +49,7 @@ public class ProjectDAOImpl implements ProjectDAO{
 			return 0;
 		}
 	}
+	@SuppressWarnings("deprecation")
 	@Override
 	public Map<Integer, List<Project>> getProjectsLike(String word,int minIndex, int maxIndex) {
 		Pageable page = new PageRequest(minIndex, maxIndex);
@@ -62,6 +62,14 @@ public class ProjectDAOImpl implements ProjectDAO{
 	@Override
 	public double getRation() {
 		return (double)size/projectRepo.count();
+	}
+
+	@Override
+	public int[] getProjectsOverview() {
+		int projectsEndingOnDateSize = projectRepo.findProjectsEndingOnDate(DateConversion.TODAY_DATE_5).size();
+		int overdueProjectsSize = projectRepo.findOverdueProjects().size();
+		int totalProjectsSize = ((List <Project>) projectRepo.findAll()).size();
+		return new int[] {projectsEndingOnDateSize,overdueProjectsSize,totalProjectsSize-overdueProjectsSize-projectsEndingOnDateSize};
 	}
 
 }

@@ -14,8 +14,7 @@
               </div>
 
             <div class="row center">
-              <a href="#try" id="" class="btn-large waves-effect waves-light blue lighten-1">Search it</a>
-
+              <a href="#try" id="" class="btn-large waves-effect waves-light blue lighten-1" (click)="sendSearchSignal($event)">Search it</a>
             </div>
           </div>
         </div>
@@ -30,7 +29,7 @@
        </div> -->
           <div class="row">
               <div class="col s12 m6 ">
-                  <app-result-nsearch [word]="word" (modalEmitter)="recieveModalFromResultNsearch($event)"
+                  <app-result-nsearch #resultNsearch [word]="word" (modalEmitter)="recieveModalFromResultNsearch($event)"
                   (ratioEmitter)="recieveRatioFromResultNsearch($event)"></app-result-nsearch>
               </div>
             <div  class="col s12 m6 section scrollspy " id="try">           
@@ -38,8 +37,11 @@
             </div>
         </div>
         <div class="row section scrollspy " id="details">
-        <router-outlet ></router-outlet>
+        <router-outlet></router-outlet>
+        <app-prolife></app-prolife>
         </div>
+        <div class="row">
+          </div>
 </div>
 
 
