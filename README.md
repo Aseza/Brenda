@@ -1,8 +1,7 @@
 # Brenda
-Simple Angular/Spring Boot CRUD app
-This is a simple CRUD app that takes advantage of the Spring Boot REST API, managed with `@ResponseBody` annotation,
-The app needs an SQL database named "Projectsdb" with a table named "pojects_table", for there is a dummy file in the repo to mock real data.
-While the back end must be run using Spring Boot maven commands `mvn spring-boot:run`,  the front end must be run using the Anguar CLI `ng serve` command.
-Any feed back is much appreciated
+Simple Angular/Spring Boot CRUD app.
 
-NOTICE : Exception Handling was INTENTIONALLY omitted, it will be resolved after.
+This is a simple CRUD app with real time functionnalities to demonstrate the use ofWebsockets with JMS on a full working backend project, it takes advantage of the Spring Boot REST API, managed with `@ResponseBody` annotation.
+The Front was coded using Angular 4 while benefiting from Observables and STOMP over Websockets as well.
+The app needs an SQL database named "Projectsdb" with a table named "pojects_table", for there is a dummy file in the repo to mock real data.
+Any feed back is much appreciated
