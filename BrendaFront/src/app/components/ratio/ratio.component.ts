@@ -46,7 +46,7 @@ update () {
   this.myChart.data.labels.push(this.ratiosInfo[0].pop());
   this.myChart.data.labels.shift();
   this.myChart.data.datasets.forEach((dataset) => {
-      //dataset.data.push(this.ratiosInfo[1].pop());
+      // dataset.data.push(this.ratiosInfo[1].pop());
 
       dataset.data.shift();
   });

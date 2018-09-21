@@ -14,7 +14,7 @@
                 <tr *ngFor="let item of projectBeforeDeadline">
                   <td>{{item.name}}</td>
                   <td>{{item.description}}</td>
-                  <td class="red-text"><strong>{{item.deadline  | relativeDate}}</strong></td>
+                  <td class="red-text"><strong>{{item.deadline  | relativeDate }}</strong></td>
                 </tr>
                 <tr *ngFor="let item of overdueProjects">
                   <td>{{item.name}}</td>

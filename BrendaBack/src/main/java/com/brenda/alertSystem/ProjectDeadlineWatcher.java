@@ -1,4 +1,4 @@
-package com.brenda.alertSystem;
+package com.brenda.alertsystem;
 
 import javax.jms.Topic;
 
@@ -8,7 +8,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.brenda.conf_dao.ProjectRepo;
+import com.brenda.conf.dao.ProjectRepo;
 import com.brenda.utilities.DateConversion;
 
 @Component

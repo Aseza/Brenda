@@ -1,4 +1,4 @@
-package com.brenda.alertSystem;
+package com.brenda.alertsystem;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.Topic;

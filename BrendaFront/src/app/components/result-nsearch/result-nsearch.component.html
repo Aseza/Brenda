@@ -29,10 +29,12 @@
     <ng-container *ngIf="projects">
         <li *ngFor="let project of projects" >
           <div class="collapsible-header black-text" [ngClass]="{'grey lighten-1': themeService.isNightModeOn}">
-            <i class="material-icons">assignment</i>{{project.name}}
+            <i class="material-icons">assignment</i>{{project.name}} <div style="float:right" class=" hide-on-small red-text right">{{project.deadLine}}</div>
           </div>
           <div class="collapsible-body">
             <span class="left  black-text" >{{project.description}}</span>
+            <span class="inline red-text" ><strong>{{project.deadLine}}</strong></span>
+
           <div class="col s4 m3 l3 right" style="width: 8em;">
             <a class="btn-floating btn-small waves-effect waves-light red right-align" 
             (click)="remove(project.id,$event)">
